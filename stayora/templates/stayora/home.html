@@ -1,0 +1,329 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Stayora - Find Your Hostel</title>
+
+    <link rel="stylesheet"
+          href="{% static 'stayora/style.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        Stayora<span>.</span>
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="#hostels">Hostels</a>
+        <a href="#about">About</a>
+    </nav>
+
+</header>
+
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Find the Right Hostel
+            <br>
+            Near Your College
+        </h1>
+
+        <p>
+            Compare rent, food, distance and
+            available beds before choosing your hostel.
+        </p>
+
+        <a href="#hostels" class="hero-button">
+            Explore Hostels
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- SEARCH AND FILTER -->
+
+<section class="search-section">
+
+    <form method="GET" class="filter-form">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search hostel or location..."
+            value="{{ search }}"
+        >
+
+
+        <select name="type">
+
+            <option value="">All</option>
+
+            <option value="Boys"
+                {% if selected_type == "Boys" %}
+                    selected
+                {% endif %}
+            >
+                Boys
+            </option>
+
+            <option value="Girls"
+                {% if selected_type == "Girls" %}
+                    selected
+                {% endif %}
+            >
+                Girls
+            </option>
+
+        </select>
+
+
+        <select name="max_rent">
+
+            <option value="">Any Rent</option>
+
+            <option value="5000"
+                {% if selected_rent == "5000" %}
+                    selected
+                {% endif %}
+            >
+                Below ₹5,000
+            </option>
+
+            <option value="7000"
+                {% if selected_rent == "7000" %}
+                    selected
+                {% endif %}
+            >
+                Below ₹7,000
+            </option>
+
+            <option value="10000"
+                {% if selected_rent == "10000" %}
+                    selected
+                {% endif %}
+            >
+                Below ₹10,000
+            </option>
+
+        </select>
+
+
+        <select name="food">
+
+            <option value="">Food</option>
+
+            <option value="yes"
+                {% if selected_food == "yes" %}
+                    selected
+                {% endif %}
+            >
+                Food Available
+            </option>
+
+        </select>
+
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</section>
+
+
+
+<!-- HOSTELS -->
+
+<section class="hostel-section" id="hostels">
+
+    <div class="section-title">
+
+        <h2>Available Hostels</h2>
+
+        <p>
+            Find a hostel that matches your needs.
+        </p>
+
+    </div>
+
+
+    <div class="hostel-grid">
+
+        {% for hostel in hostels %}
+
+
+        <div class="hostel-card">
+
+
+            <div class="card-top">
+
+                <span class="hostel-type">
+                    {{ hostel.hostel_type }}
+                </span>
+
+                <span class="rating">
+                    ⭐ {{ hostel.rating }}
+                </span>
+
+            </div>
+
+
+            <h3>
+                {{ hostel.name }}
+            </h3>
+
+
+            <p class="location">
+                📍 {{ hostel.location }}
+            </p>
+
+
+            <div class="details">
+
+
+                <div class="detail">
+
+                    <strong>₹{{ hostel.rent }}</strong>
+
+                    <span>Monthly Rent</span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <strong>
+                        {{ hostel.distance }} km
+                    </strong>
+
+                    <span>From College</span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <strong>
+                        {{ hostel.available_beds }}
+                    </strong>
+
+                    <span>Available Beds</span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="food">
+
+                {% if hostel.food_available %}
+
+                    🍛 Food Available
+
+                {% else %}
+
+                    ❌ Food Not Available
+
+                {% endif %}
+
+            </div>
+
+
+            {% if hostel.description %}
+
+                <p class="description">
+                    {{ hostel.description }}
+                </p>
+
+            {% endif %}
+
+
+            <a
+                href="tel:{{ hostel.phone }}"
+                class="call-button"
+            >
+                📞 Call Hostel
+            </a>
+
+
+        </div>
+
+
+        {% empty %}
+
+        <div class="no-results">
+
+            <h3>No hostels found</h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <h2>About Stayora</h2>
+
+    <p>
+        Stayora helps students find suitable hostels
+        near their college by comparing important
+        details like rent, food, distance and vacancy.
+    </p>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Stayora. Built for students.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

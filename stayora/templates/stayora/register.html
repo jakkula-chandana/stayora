@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | Stayora</title>
+</head>
+
+<body>
+
+    <h1>Register for Stayora</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <br><br>
+
+        <label>Password</label>
+        <div>
+    <input type="password" name="password" id="password" required>
+    <button type="button" onclick="togglePassword()">👁</button>
+</div>
+
+
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+    <script>
+function togglePassword() {
+    const password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+</script>
+</body>
+</html>
