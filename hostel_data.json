@@ -1,0 +1,56 @@
+[
+{
+  "model": "stayora.hostel",
+  "pk": 1,
+  "fields": {
+    "name": "SVR Girls Hostel",
+    "hostel_type": "Girls",
+    "location": "Bollikunta, Warangal",
+    "rent": 4000,
+    "distance": "50 metres from clg",
+    "food_available": true,
+    "total_beds": 71,
+    "available_beds": 20,
+    "phone": "6303047248",
+    "rating": "0.0",
+    "description": "",
+    "created_at": "2026-10-06T05:48:43Z"
+  }
+},
+{
+  "model": "stayora.hostel",
+  "pk": 2,
+  "fields": {
+    "name": "Mukundha Girls Hostel",
+    "hostel_type": "Girls",
+    "location": "Bollikunta, Warangal",
+    "rent": 3800,
+    "distance": "100 mtrs",
+    "food_available": true,
+    "total_beds": 60,
+    "available_beds": 25,
+    "phone": "8317575465",
+    "rating": "0.0",
+    "description": "",
+    "created_at": "2026-10-06T05:48:43Z"
+  }
+},
+{
+  "model": "stayora.hostel",
+  "pk": 3,
+  "fields": {
+    "name": "Vishnu Boys Hostel",
+    "hostel_type": "Boys",
+    "location": "20 meters form college",
+    "rent": 4200,
+    "distance": "Not specified",
+    "food_available": true,
+    "total_beds": 70,
+    "available_beds": 20,
+    "phone": "8317575465",
+    "rating": "2.6",
+    "description": "",
+    "created_at": "2026-10-06T05:53:48Z"
+  }
+}
+]
